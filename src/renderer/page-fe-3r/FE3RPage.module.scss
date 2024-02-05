@@ -1,0 +1,49 @@
+@use "../root.module";
+
+.page {
+  display: grid;
+  grid-template-columns: 9vw auto;
+}
+
+.bar {
+  min-width: 81px;
+  @include root.grid-center;
+}
+
+.list {
+  $color: root.$shadow-color;
+  @include root.grid-center;
+  grid-template-rows: auto;
+  color: $color;
+  font-size: 36px;
+  grid-row-gap: 3vh;
+
+  %it {
+    border-radius: 6px;
+    border: 1px solid $color;
+    cursor: text;
+    width: 54px;
+    line-height: 51px;
+    vertical-align: center;
+    text-align: center;
+  }
+  %it:first-child{
+    font-size: 33px;
+  }
+  .enable, .disable {
+    @extend %it;
+  }
+
+  .enable {
+    @include root.hover-shadow(3, 1);
+  }
+}
+
+
+.main {
+  $size-min: root.$viewport-min;
+  height: 100vh;
+  min-height: $size-min;
+  min-width: $size-min;
+}
+

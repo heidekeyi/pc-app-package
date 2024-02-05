@@ -1,0 +1,49 @@
+@use "../root.module";
+
+.page {
+  $color: root.$shadow-color;
+  color: $color;
+  width: 100vw;
+  height: 100vh;
+  @include root.grid-center;
+
+  .list {
+    $gap: 3vw;
+    $size-width: 135px;
+    width: 96vw;
+    height: 96vh;
+    @include root.grid-center;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fill, $size-width);
+    gap: $gap;
+
+    .it {
+      display: grid;
+      place-items: center;
+      grid-template-rows: 1fr 4fr 4fr 1fr;
+      grid-template-areas:
+  "."
+  'pos-icon'
+  'pos-text'
+  '.';
+      border: 1px solid $color;
+      border-radius: 9px;
+      width: $size-width;
+      height: 111px;
+      flex: none;
+      @include root.hover-shadow(3, 2);
+    }
+  }
+}
+
+.icon {
+  grid-area: pos-icon;
+  font-size: 36px;
+}
+
+.text {
+  grid-area: pos-text;
+  font-size: 18px;
+  line-height: 30px;
+  vertical-align: center;
+}

@@ -1,0 +1,23 @@
+@use "../root.module";
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  @include root.grid-center;
+}
+
+.list {
+  width: 90vw;
+  min-height: 90vh;
+  grid-template-columns: repeat(3, 21vw);
+  gap: 6vh 6vw;
+  @include root.grid-center;
+}
+
+.it {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 6px;
+
+  @include root.hover-shadow(3);
+}

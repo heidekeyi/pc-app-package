@@ -1,0 +1,42 @@
+$viewport-min: 630px;
+$shadow-color: #FCFC03;
+
+@mixin transition-hover($name, $list...) {
+  $action: 0.63s ease;
+  $val: $name $action;
+  @each $it in $list {
+    $val: $val, $it $action;
+  }
+  //property(width...) time(s) action(ease)
+  transition: $val;
+}
+
+@mixin hover-shadow($box, $text:null) {
+  cursor: pointer;
+  @include transition-hover(color);
+  &:hover {
+    @if ($box) {
+      //offset-x offset-y radius color
+      box-shadow: 0 0 $box * 3px $shadow-color;
+    }
+    @if ($text) {
+      text-shadow: 0 0 $text * 3px $shadow-color;
+    }
+  }
+}
+
+@mixin grid-center {
+  display: grid;
+  place-content: center;
+  place-items: center;
+}
+
+@mixin flex-center {
+  display: flex;
+  //justify-content: center;
+  //align-content: center;
+  //justify-items: center;
+  //align-items: center;
+  place-content: center;
+  place-items: center;
+}
